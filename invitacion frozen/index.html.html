@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Frozen</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Playfair Display', serif;
+  background: linear-gradient(to bottom, #dff6ff, #a0d8ef, #5dade2);
+  overflow-x:hidden;
+  text-align:center;
+  color:#ffffff;
+}
+
+.contenedor{
+  padding:40px 20px;
+  animation:fadeIn 2s ease-in-out;
+}
+
+h1{
+  font-family:'Great Vibes', cursive;
+  font-size:60px;
+  margin:10px 0;
+  text-shadow:0 0 15px #ffffff;
+}
+
+h2{
+  font-size:28px;
+  letter-spacing:3px;
+  margin-bottom:20px;
+}
+
+.foto-marco{
+  width:250px;
+  height:250px;
+  margin:20px auto;
+  border-radius:50%;
+  border:6px solid rgba(255,255,255,0.8);
+  box-shadow:0 0 25px rgba(255,255,255,0.9);
+  overflow:hidden;
+}
+
+.foto-marco img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.detalles{
+  font-size:18px;
+  margin:20px 0;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  margin:10px;
+  padding:12px 25px;
+  border-radius:30px;
+  border:none;
+  background:linear-gradient(45deg,#85c1e9,#d6eaf8);
+  color:#0b3c5d;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+  text-decoration:none;
+}
+
+.btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px #ffffff;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ❄️ Copos de nieve */
+.snowflake{
+  position:fixed;
+  top:-10px;
+  color:white;
+  font-size:1.2em;
+  animation:fall linear infinite;
+  user-select:none;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<h2>Mis 15 Años</h2>
+<h1>Valentina</h1>
+
+<div class="foto-marco">
+  <img src="foto15.jpg" alt="Foto">
+</div>
+
+<div class="detalles">
+  ❄️ Te invito a vivir una noche mágica ❄️ <br><br>
+  📅 20 de Agosto 2026 <br>
+  🕘 21:00 hs <br>
+  📍 Salón Crystal Palace
+</div>
+
+<button class="btn" onclick="reproducirMusica()">🎼 Activar Música</button>
+
+<a class="btn" href="https://wa.me/5491122508892?text=Confirmo%20asistencia%20a%20los%2015%20años" target="_blank">
+📲 Confirmar Asistencia
+</a>
+
+<a class="btn" href="https://www.google.com/maps" target="_blank">
+📍 Ver Ubicación
+</a>
+
+</div>
+
+<!-- Música -->
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function reproducirMusica(){
+  document.getElementById("musica").play();
+}
+
+/* Generador de copos */
+function crearNieve(){
+  const snow = document.createElement("div");
+  snow.classList.add("snowflake");
+  snow.innerHTML = "❄";
+  snow.style.left = Math.random() * window.innerWidth + "px";
+  snow.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  snow.style.opacity = Math.random();
+  snow.style.fontSize = (Math.random() * 10 + 10) + "px";
+  document.body.appendChild(snow);
+
+  setTimeout(() => {
+    snow.remove();
+  }, 6000);
+}
+
+setInterval(crearNieve, 200);
+</script>
+
+</body>
+</html>
